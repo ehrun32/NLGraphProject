@@ -10,6 +10,7 @@ deepseek_client = OpenAI( api_key=os.getenv("DEEPSEEK_API_KEY"), base_url="https
 claude_client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 def call_openai_chat(model, prompt, return_usage=False):
+    # model="o3-mini-2025-01-31"
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": prompt}
@@ -28,6 +29,7 @@ def call_openai_chat(model, prompt, return_usage=False):
     return content
 
 def call_deepseek_chat(model, prompt, return_usage=False):
+    # model="deepseek-reasoner",
     messages = [
         {"role": "user", "content": prompt}
     ]
@@ -53,7 +55,7 @@ def call_deepseek_chat(model, prompt, return_usage=False):
 
 
 def call_anthropic_claude(model, prompt, return_usage=False):
-
+    # model="claude-3-7-sonnet-20250219",
 
     response = claude_client.messages.create(
         model=model,
