@@ -146,7 +146,7 @@ def main():
     }
 
     g_num = {
-        "easy": 10,
+        "easy": 1,
         "medium": 600,
         "hard": 400
 
