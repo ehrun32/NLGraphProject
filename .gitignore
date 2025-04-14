@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+
+env/
+venv/
+.NLGraph/
+
+log/
+*.npy
+prompt.txt
+check_output.py
+localFile.txt
+
+.ipynb_checkpoints/
+
+.env
