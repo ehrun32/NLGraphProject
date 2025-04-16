@@ -10,13 +10,13 @@ I gratefully acknowledge the NLGraph authors and build directly on their benchma
 
 ---
 
-## 📽️ Demo
+## Demo
 
 [Click here to watch the demo video](https://drive.google.com/file/d/1TAYWiE-96qztf7lAogr77ci096IQF6Ia/view?usp=sharing)
 
 ---
 
-## 🧪 Environment Setup
+## Environment Setup
 
 Using Conda:
 
@@ -39,7 +39,7 @@ pip install numpy networkx tqdm tenacity anthropic openai python-dotenv
 
 ---
 
-## 🔐 API Keys
+## API Keys
 
 Create a `.env` file in the project root with your API keys:
 
@@ -51,7 +51,7 @@ ANTHROPIC_API_KEY=your_anthropic_key
 
 ---
 
-## 📈 Evaluation
+## Evaluation
 
 Run the evaluation for a specific task:
 
@@ -77,7 +77,7 @@ python evaluation/gnn.py --model claude-3-7-sonnet-20250219 --provider anthropic
 
 ---
 
-## 🧠 Supported Prompting Modes
+## Supported Prompting Modes
 
 Available prompting techniques via the `--prompt` argument:
 
@@ -94,7 +94,7 @@ Available prompting techniques via the `--prompt` argument:
 
 ---
 
-## 📂 Dataset Structure
+## Dataset Structure
 
 Each task directory (`cycle/`, `flow/`, `GNN/`) contains:
 
@@ -103,7 +103,7 @@ Each task directory (`cycle/`, `flow/`, `GNN/`) contains:
 
 ---
 
-## 📜 Citation (Original NLGraph Paper)
+## Citation (Original NLGraph Paper)
 
 If you use this repository or benchmark, please cite the original NLGraph paper:
 
