@@ -10,6 +10,12 @@ I gratefully acknowledge the NLGraph authors and build directly on their benchma
 
 ---
 
+## 📽️ Demo
+
+[Click here to watch the demo video](https://drive.google.com/file/d/1TAYWiE-96qztf7lAogr77ci096IQF6Ia/view?usp=sharing)
+
+---
+
 ## 🧪 Environment Setup
 
 Using Conda:
@@ -113,8 +119,3 @@ url={https://openreview.net/forum?id=UDqHhbqYJV}
 ```
 
 ---
-
-<!--
-## 📽️ Demo
-
-A demo video is available in the GitHub repo to show how to run the code and reproduce the experiments. -->
