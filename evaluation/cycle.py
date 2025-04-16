@@ -198,7 +198,7 @@ def main():
             res.append(1 if vote * 2 >= sc else 0)
 
     log(Q_list, np.array(res), np.array(answer), all_raw, args)
-    # print("Final Accuracy:", sum(res), "/", len(res))
+    print("Final Accuracy:", sum(res), "/", len(res))
     # print("\n=== Token Usage Summary ===")
     # print(f"Total Input Tokens:  {total_input_tokens}")
     # print(f"Total Output Tokens: {total_output_tokens}")
