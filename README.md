@@ -68,6 +68,10 @@ python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --promp
 # DeepSeek-R1 on Cycle Detection (hard)
 python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --prompt Instruct --mode hard
 
+# DeepSeek-R1 on Cycle Detection (hard + CoT-SC)
+
+python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --prompt CoT --mode hard --SC 1 --SC_num 5
+
 # o3-mini (OpenAI) on Max-Flow
 python evaluation/flow.py --model o3-mini-2025-01-31 --provider openai --prompt none --mode easy
 
@@ -91,6 +95,19 @@ Available prompting techniques via the `--prompt` argument:
 - `"Algorithm"` – Algorithmic Prompting
 - `"Recitation"` – Subquestion Prompting
 - `"medium-CoT"` and `"hard-CoT"` – Difficulty-specific CoT styles
+
+---
+
+## Self-Consistency Mode (--SC)
+
+Enable self-consistency by passing the --SC flag along with the number of samples to aggregate using --SC_num. This runs the model multiple times and returns the most frequent answer (majority vote)
+
+```bash
+# DeepSeek-R1 on Cycle Detection (hard + CoT-SC)
+python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --prompt CoT --mode hard --SC 1 --SC_num 5
+```
+
+This command evaluates Cycle Detection on hard mode using DeepSeek R1 with Chain-of-Thought prompting and 5 self-consistency samples.
 
 ---
 
