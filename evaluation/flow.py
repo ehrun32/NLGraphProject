@@ -102,7 +102,8 @@ def main():
         main_data = json.load(f)
 
     mode_index = {"easy": 0, "hard": 150}
-    g_num = {"easy": 1, "hard": 1}[args.mode]
+    g_num = {"easy": 150, "hard": 200}[args.mode]
+    # g_num = {"easy": 150, "hard": 200}[args.mode]
     base_index = mode_index[args.mode]
 
     res, answers = [], []

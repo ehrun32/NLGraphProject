@@ -1,32 +1,107 @@
-## Can Language Models Solve Graph Problems in Natural Language?
+# Reinforcement-Tuned Language Models for Graph Reasoning
 
-paper link: [https://arxiv.org/abs/2305.10037](https://arxiv.org/abs/2305.10037)
+### _(An Extension of NLGraph)_
 
-Check out the NLGraph dataset! `main.json` in each task features a supervised fine-tuning setting and is divided into `train.json` and `test.json`. The `graph` directory in each task contains the raw graph data (i.e. graph represented by numbers) divided into easy, (medium) and hard. In the raw graph data, the first two numbers in the first line are the number of nodes and edges and the following lines give the edges and queries. 
+This repository extends the original [NLGraph benchmark](https://arxiv.org/abs/2305.10037) introduced in the paper **"Can Language Models Solve Graph Problems in Natural Language?"** by Heng Wang et al., NeurIPS 2023. The original work evaluated GPT-based models on graph problems described in natural language.
 
-### Evaluation
+This work evaluates modern **reasoning-tuned large language models (LLMs)** such as **DeepSeek R1**, **Claude 3.7 Sonnet**, and **OpenAI o3-mini** across several graph problems: **cycle detection**, **maximum flow**, and **GNN**. Only did those 3 due to cost measurements.
 
-**Environment:** `conda env create -f environment.yml` would generate a conda environment called `NLGraph` that should be able to run the code.
+I gratefully acknowledge the NLGraph authors and build directly on their benchmark and codebase.
 
-First set your openai key `OEPNAI_API_KEY` (and openai organization `OPENAI_ORGANIZATION` optionally):
-```
-$env:OPENAI_API_KEY="your openai key" # for Windows powershell
-export OPENAI_API_KEY="your openai key" # for Linux
-```
-then run the evaluation code for a specific task:
-```
-python evaluation/<task_name>.py --model <name of LM> --mode <difficulty_mode> --prompt <prompting technique> --T <temperature> --token <max number of token> --SC <whether to use self-consistency> --SC_num <sampling number for SC>
-```
-For instance,
-```
-python evaluation/cycle.py --model text-davinci-003 --mode easy --prompt CoT --SC 1 --SC_num 5
-```
-evaluates `text-davinci-003` model on the easy subset of cycle task, using chain-of-thought prompting together with self-consistency.
+---
 
-More complete repo coming soon...
-### Citation
-If you find this repo useful, please cite our paper:
+## 🧪 Environment Setup
+
+Using Conda:
+
+```bash
+conda env create -f environment.yml
+conda activate NLGraph
 ```
+
+Or using `pip` if Conda is unavailable:
+
+```bash
+pip install -r requirements.txt
+```
+
+Or
+
+```bash
+pip install numpy networkx tqdm tenacity anthropic openai python-dotenv
+```
+
+---
+
+## 🔐 API Keys
+
+Create a `.env` file in the project root with your API keys:
+
+```
+OPENAI_API_KEY=your_openai_key
+DEEPSEEK_API_KEY=your_deepseek_key
+ANTHROPIC_API_KEY=your_anthropic_key
+```
+
+---
+
+## 📈 Evaluation
+
+Run the evaluation for a specific task:
+
+```bash
+python evaluation/cycle.py --model <model_name> --provider <provider_name> --prompt <prompt_type> --mode <difficulty>
+```
+
+### Example Commands
+
+```bash
+# DeepSeek-R1 on Cycle Detection (easy)
+python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --prompt Algorithm --mode easy
+
+# DeepSeek-R1 on Cycle Detection (hard)
+python evaluation/cycle.py --model deepseek-reasoner --provider deepseek --prompt Instruct --mode hard
+
+# o3-mini (OpenAI) on Max-Flow
+python evaluation/flow.py --model o3-mini-2025-01-31 --provider openai --prompt none --mode easy
+
+# Claude 3.7 Sonnet on GNN
+python evaluation/gnn.py --model claude-3-7-sonnet-20250219 --provider anthropic --prompt CoT --mode hard
+```
+
+---
+
+## 🧠 Supported Prompting Modes
+
+Available prompting techniques via the `--prompt` argument:
+
+- `"none"` – Zero-Shot
+- `"CoT"` – Chain-of-Thought
+- `"0-CoT"` – Zero-Shot CoT
+- `"k-shot"` – Few-Shot In-Context
+- `"LTM"` – Least-to-Most Prompting
+- `"PROGRAM"` – Code-based Reasoning
+- `"Instruct"` – Instruction-Based Prompt
+- `"Algorithm"` – Algorithmic Prompting
+- `"Recitation"` – Subquestion Prompting
+- `"medium-CoT"` and `"hard-CoT"` – Difficulty-specific CoT styles
+
+---
+
+## 📂 Dataset Structure
+
+Each task directory (`cycle/`, `flow/`, `GNN/`) contains:
+
+- `main.json` — Ground-truth answers
+- `graph/{easy,medium,hard}/` — Graph inputs grouped by difficulty
+
+---
+
+## 📜 Citation (Original NLGraph Paper)
+
+If you use this repository or benchmark, please cite the original NLGraph paper:
+
+```bibtex
 @inproceedings{
 wang2023can,
 title={Can Language Models Solve Graph Problems in Natural Language?},
@@ -36,3 +111,10 @@ year={2023},
 url={https://openreview.net/forum?id=UDqHhbqYJV}
 }
 ```
+
+---
+
+<!--
+## 📽️ Demo
+
+A demo video is available in the GitHub repo to show how to run the code and reproduce the experiments. -->
