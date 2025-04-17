@@ -6,7 +6,7 @@ This repository extends the original [NLGraph benchmark](https://arxiv.org/abs/2
 
 This work evaluates modern **reasoning-tuned large language models (LLMs)** such as **DeepSeek R1**, **Claude 3.7 Sonnet**, and **OpenAI o3-mini** across several graph problems: **cycle detection**, **maximum flow**, and **GNN**. Only did those 3 due to cost measurements.
 
-I gratefully acknowledge the NLGraph authors and build directly on their benchmark and codebase.
+I gratefully acknowledge the NLGraph authors and build directly on their benchmark and codebase
 
 ---
 
